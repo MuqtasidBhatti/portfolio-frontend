@@ -10,6 +10,7 @@ const Dashboard = () => {
     const [togglingId, setTogglingId] = useState(null)
     const [messages, setMessages] = useState([])
     const [messagesLoading, setMessagesLoading] = useState(true)
+    const [expandedId, setExpandedId] = useState(null)
 
     const token = localStorage.getItem('token')
     const navigate = useNavigate()
@@ -258,31 +259,51 @@ const Dashboard = () => {
                                 </thead>
                                 <tbody>
                                     {messages.map((msg) => (
-                                        <tr
-                                            key={msg._id}
-                                            className={`border-b border-zinc-800/60 last:border-b-0 ${!msg.isRead ? 'bg-emerald-950/10' : ''}`}
-                                        >
-                                            <td className="px-5 py-4 text-sm text-white font-medium whitespace-nowrap">{msg.name}</td>
-                                            <td className="px-5 py-4 text-sm text-zinc-400 whitespace-nowrap">{msg.email}</td>
-                                            <td className="px-5 py-4 text-sm text-zinc-400 max-w-xs truncate">{msg.message}</td>
-                                            <td className="px-5 py-4 whitespace-nowrap">
-                                                {msg.isRead ? (
-                                                    <span className="text-xs text-zinc-600">Read</span>
-                                                ) : (
-                                                    <span className="text-xs px-2 py-1 bg-emerald-400/10 text-emerald-400 rounded-sm">New</span>
-                                                )}
-                                            </td>
-                                            <td className="px-5 py-4 whitespace-nowrap">
-                                                {!msg.isRead && (
-                                                    <button
-                                                        onClick={() => handleMarkAsRead(msg._id)}
-                                                        className="text-xs px-3 py-1.5 border border-zinc-700 text-zinc-400 rounded-sm hover:border-zinc-500 hover:text-white transition-all duration-200 cursor-pointer"
-                                                    >
-                                                        Mark Read
-                                                    </button>
-                                                )}
-                                            </td>
-                                        </tr>
+                                        <React.Fragment key={msg._id}>
+                                            <tr
+                                                onClick={() => setExpandedId(expandedId === msg._id ? null : msg._id)}
+                                                className={`border-b border-zinc-800/60 cursor-pointer hover:bg-zinc-900/40 transition-colors duration-150 ${!msg.isRead ? 'bg-emerald-950/10' : ''}`}
+                                            >
+                                                <td className="px-5 py-4 text-sm text-white font-medium whitespace-nowrap">{msg.name}</td>
+                                                <td className="px-5 py-4 text-sm text-zinc-400 whitespace-nowrap">{msg.email}</td>
+                                                <td className="px-5 py-4 text-sm text-zinc-400 max-w-xs truncate">{msg.message}</td>
+                                                <td className="px-5 py-4 whitespace-nowrap">
+                                                    {msg.isRead ? (
+                                                        <span className="text-xs text-zinc-600">Read</span>
+                                                    ) : (
+                                                        <span className="text-xs px-2 py-1 bg-emerald-400/10 text-emerald-400 rounded-sm">New</span>
+                                                    )}
+                                                </td>
+                                                <td className="px-5 py-4 whitespace-nowrap" onClick={(e) => e.stopPropagation()}>
+                                                    {!msg.isRead && (
+                                                        <button
+                                                            onClick={() => handleMarkAsRead(msg._id)}
+                                                            className="text-xs px-3 py-1.5 border border-zinc-700 text-zinc-400 rounded-sm hover:border-zinc-500 hover:text-white transition-all duration-200 cursor-pointer"
+                                                        >
+                                                            Mark Read
+                                                        </button>
+                                                    )}
+                                                </td>
+                                            </tr>
+
+                                            {/* Expanded row */}
+                                            {expandedId === msg._id && (
+                                                <tr className="border-b border-zinc-800/60 bg-zinc-900/30">
+                                                    <td colSpan={5} className="px-5 py-4">
+                                                        <p className="text-zinc-300 text-sm leading-relaxed">{msg.message}</p>
+                                                        <p className="text-zinc-600 text-xs mt-2">
+                                                            {new Date(msg.createdAt).toLocaleDateString('en-US', {
+                                                                year: 'numeric',
+                                                                month: 'long',
+                                                                day: 'numeric',
+                                                                hour: '2-digit',
+                                                                minute: '2-digit'
+                                                            })}
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            )}
+                                        </React.Fragment>
                                     ))}
                                 </tbody>
                             </table>
