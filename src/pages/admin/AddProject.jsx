@@ -28,7 +28,7 @@ const AddProject = () => {
     setError('')
     setLoading(true)
     try {
-      await axios.post('http://localhost:5000/api/projects', projects, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/projects`, projects, {
         headers: { Authorization: `Bearer ${token}` },
       })
       navigate('/admin/dashboard')

@@ -22,7 +22,7 @@ const Contact = () => {
         }
         setLoading(true)
         try {
-            await axios.post('http://localhost:5000/api/messages', formData)
+            await axios.get(`${import.meta.env.VITE_API_URL}/api/messages`, formData)
             setSuccess(true)
             setFormData(EMPTY_FORM)
         } catch (err) {

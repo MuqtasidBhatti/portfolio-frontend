@@ -16,7 +16,7 @@ const Dashboard = () => {
 
     const fetchProjects = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/projects/all', authHeaders)
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/projects/all`, authHeaders)
             setProjects(res.data)
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to load projects.')
@@ -37,7 +37,7 @@ const Dashboard = () => {
         if (!window.confirm('Delete this project? This cannot be undone.')) return
         setDeletingId(id)
         try {
-            await axios.delete(`http://localhost:5000/api/projects/${id}`, authHeaders)
+            awaitaxios.delete(`${import.meta.env.VITE_API_URL}/api/projects/${id}`, authHeaders)
             setProjects((prev) => prev.filter((p) => p._id !== id))
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to delete project.')
@@ -49,11 +49,7 @@ const Dashboard = () => {
     const handleToggle = async (id) => {
         setTogglingId(id)
         try {
-            const res = await axios.patch(
-                `http://localhost:5000/api/projects/${id}/toggle`,
-                {},
-                authHeaders
-            )
+            const res = axios.patch(`${import.meta.env.VITE_API_URL}/api/projects/${id}/toggle`, {}, authHeaders)
             setProjects((prev) =>
                 prev.map((p) => (p._id === id ? res.data.project : p))
             )
@@ -171,16 +167,14 @@ const Dashboard = () => {
                                 {/* Status */}
                                 <div className="col-span-2">
                                     <span
-                                        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm text-xs font-medium ${
-                                            project.isPublished
+                                        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm text-xs font-medium ${project.isPublished
                                                 ? 'bg-emerald-950/50 border border-emerald-800/50 text-emerald-400'
                                                 : 'bg-zinc-900 border border-zinc-700 text-zinc-500'
-                                        }`}
+                                            }`}
                                     >
                                         <span
-                                            className={`w-1 h-1 rounded-full ${
-                                                project.isPublished ? 'bg-emerald-400' : 'bg-zinc-600'
-                                            }`}
+                                            className={`w-1 h-1 rounded-full ${project.isPublished ? 'bg-emerald-400' : 'bg-zinc-600'
+                                                }`}
                                         />
                                         {project.isPublished ? 'Published' : 'Draft'}
                                     </span>
@@ -203,8 +197,8 @@ const Dashboard = () => {
                                         {togglingId === project._id
                                             ? '...'
                                             : project.isPublished
-                                            ? 'Unpublish'
-                                            : 'Publish'}
+                                                ? 'Unpublish'
+                                                : 'Publish'}
                                     </button>
 
                                     <button

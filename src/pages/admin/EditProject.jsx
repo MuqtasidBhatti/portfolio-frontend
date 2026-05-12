@@ -29,7 +29,7 @@ const EditProject = () => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/projects/${id}`, {
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/projects/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         setProjects(data)
@@ -46,7 +46,7 @@ const EditProject = () => {
     setError('')
     setLoading(true)
     try {
-      await axios.put(`http://localhost:5000/api/projects/${id}`, projects, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/projects/${id}`, projects, {
         headers: { Authorization: `Bearer ${token}` },
       })
       navigate('/admin/dashboard')
