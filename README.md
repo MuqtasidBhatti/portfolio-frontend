@@ -13,6 +13,15 @@ React, Tailwind CSS, Vite, Axios
 - Light / Dark mode toggle
 - Admin dashboard to add, edit, and delete projects (protected route)
 
+## Screenshots
+
+![Home](screenshots/Home.png)
+![Projects](screenshots/Projects.png)
+![About Dark Mode](screenshots/AboutDarkMode.png)
+![About Light Mode](screenshots/AboutLightMode.png)
+![Contact Dark Mode](screenshots/ContactDarkMode.png)
+![Contact Light Mode](screenshots/ContactLightMode.png)
+
 ## Setup
 1. Clone the repo
 2. Run `npm install`
