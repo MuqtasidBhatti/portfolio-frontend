@@ -78,7 +78,7 @@ const Home = () => {
                     >
                         {/* Decorative ring */}
                         <div className="absolute inset-0 rounded-full border border-emerald-400/20 scale-110" />
-                        <div className="absolute inset-0 rounded-full border border-zinc-300/40 dark:border-zinc-700/40 scale-125" />
+                        <div className="hidden md:block absolute inset-0 rounded-full border border-zinc-300/40 dark:border-zinc-700/40 scale-125" />
 
                         {/* Accent dot */}
                         <div className="absolute top-4 right-4 w-3 h-3 rounded-full bg-emerald-400 z-10 shadow-lg shadow-emerald-400/50" />
