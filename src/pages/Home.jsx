@@ -18,7 +18,7 @@ const Home = () => {
 
             {/* Hero Section */}
             <section className="min-h-screen max-w-6xl mx-auto px-6 flex items-center">
-                <div className="w-full flex flex-col md:flex-row items-center justify-between gap-16 pt-16">
+                <div className="w-full flex flex-col md:flex-row items-center justify-between gap-16 pt-24 md:pt-16">
 
                     {/* Text Content */}
                     <div
@@ -64,11 +64,6 @@ const Home = () => {
                                 Get In Touch
                             </button>
                         </div>
-
-                        <p className="text-zinc-400 dark:text-zinc-600 text-sm mt-6 font-mono">
-                            Currently building:{' '}
-                            <span className="text-emerald-500 dark:text-emerald-400">Portfolio CMS with admin dashboard</span>
-                        </p>
                     </div>
 
                     {/* Profile Image */}
