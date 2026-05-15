@@ -43,11 +43,11 @@ const About = () => {
                         </section>
 
                         {/* Resume */}
-                        {/* <section>
+                        <section>
                             <h3 className="text-xs tracking-[0.3em] uppercase font-medium text-zinc-500 mb-5">
                                 Resume
                             </h3>
-                            
+                            <a
                                 href="/resume.pdf"
                                 download
                                 className="inline-flex items-center gap-3 px-6 py-3 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 text-sm font-medium tracking-wide rounded-sm hover:border-emerald-400 hover:text-emerald-400 transition-all duration-200 group"
@@ -67,7 +67,7 @@ const About = () => {
                                 </svg>
                                 Download Resume
                             </a>
-                        </section> */}
+                        </section>
 
                         {/* Social Links */}
                         <section>
