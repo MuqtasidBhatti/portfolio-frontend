@@ -49,10 +49,10 @@ const Footer = () => {
                             Get In Touch
                         </h4>
                         <a
-                            href="mailto:muqtasidbhatti246@gmail.com"
+                            href="mailto:muqtasidinfinite@gmail.com"
                             className="text-zinc-500 dark:text-zinc-400 text-sm hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-200 block mb-5"
                         >
-                            muqtasidbhatti246@gmail.com
+                            muqtasidinfinite@gmail.com
                         </a>
 
                         <div className="flex gap-3">
