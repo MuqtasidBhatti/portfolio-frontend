@@ -67,10 +67,11 @@ const Contact = () => {
                                     </svg>
                                 </div>
                                 <a
-                                    href="mailto:muqtasidbhatti246@gmail.com"
+                                    href="mailto:muqtasidinfinite@gmail.com"
                                     className="text-zinc-600 dark:text-zinc-300 text-sm hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-200"
                                 >
-                                    muqtasidbhatti246@gmail.com
+                                    muqtasidinfinite@gmail.com
+
                                 </a>
                             </div>
 
