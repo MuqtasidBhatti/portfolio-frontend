@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ProjectCard from '../components/ProjectCard'
+import FeaturedProjectCard from '../components/FeaturedProjectCard'
 import axios from 'axios'
 
 const Projects = () => {
@@ -21,6 +22,9 @@ const Projects = () => {
         fetchProjects()
     }, [])
 
+    const featured = projects[0] || null
+    const rest = projects.slice(1)
+
     return (
         <div className="min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white pt-24">
             <div className="max-w-6xl mx-auto px-6 py-16">
@@ -36,7 +40,7 @@ const Projects = () => {
                     <div className="h-px w-16 bg-emerald-500 dark:bg-emerald-400 mt-6" />
                 </div>
 
-                {/* Loading State */}
+                {/* Loading */}
                 {loading && (
                     <div className="flex items-center gap-3 text-zinc-500">
                         <div className="w-4 h-4 border border-zinc-300 dark:border-zinc-600 border-t-emerald-400 rounded-full animate-spin" />
@@ -44,7 +48,7 @@ const Projects = () => {
                     </div>
                 )}
 
-                {/* Error State */}
+                {/* Error */}
                 {error && (
                     <div className="flex items-start gap-3 p-5 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800/50 rounded-sm">
                         <svg className="w-4 h-4 text-red-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -54,19 +58,27 @@ const Projects = () => {
                     </div>
                 )}
 
-                {/* Empty State */}
+                {/* Empty */}
                 {!loading && !error && projects.length === 0 && (
                     <div className="py-24 text-center border border-dashed border-zinc-200 dark:border-zinc-800 rounded-sm">
                         <p className="text-zinc-400 dark:text-zinc-600 text-sm tracking-wide">No projects yet.</p>
                     </div>
                 )}
 
-                {/* Projects Grid */}
+                {/* Featured + Grid */}
                 {!loading && !error && projects.length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {projects.map((project) => (
-                            <ProjectCard key={project._id} project={project} />
-                        ))}
+                    <div className="space-y-6">
+                        {/* Featured card - full width */}
+                        {featured && <FeaturedProjectCard project={featured} />}
+
+                        {/* Rest in grid */}
+                        {rest.length > 0 && (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+                                {rest.map((project) => (
+                                    <ProjectCard key={project._id} project={project} />
+                                ))}
+                            </div>
+                        )}
                     </div>
                 )}
             </div>

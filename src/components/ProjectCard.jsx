@@ -58,7 +58,7 @@ const ProjectCard = ({ project }) => {
           </div>
           <button
             onClick={() => navigate(`/projects/${project._id}`)}
-            className="text-xs px-3 py-1.5 border border-emerald-500 dark:border-emerald-400 text-emerald-500 dark:text-emerald-400 rounded hover:bg-emerald-500 dark:hover:bg-emerald-400 hover:text-white dark:hover:text-zinc-950 transition-all duration-200"
+            className="text-xs px-3 py-1.5 border border-emerald-500 dark:border-emerald-400 text-emerald-500 dark:text-emerald-400 rounded hover:bg-emerald-500 dark:hover:bg-emerald-400 hover:text-white dark:hover:text-zinc-950 transition-all duration-200 cursor-pointer"
           >
             View Details
           </button>

@@ -32,10 +32,10 @@ const About = () => {
                                 code and real functionality.
                             </p>
                             <p className="text-zinc-600 dark:text-zinc-300 text-lg leading-relaxed mt-4">
-                                In the last year, I built and deployed 3 full-stack apps: a Todo
-                                app with JWT authentication, a Blog platform, and a full E-Commerce
-                                store with an admin panel. All built with MongoDB, Express, React,
-                                and Node.js.
+                                I've built and deployed 4 full-stack apps: Sibzer, a full restaurant
+                                platform with JWT auth, online ordering, coupons, and Cloudinary image
+                                uploads; an E-Commerce store with an admin panel; a Blog platform; and
+                                a Todo app. All built with MongoDB, Express, React, and Node.js.
                             </p>
                             <p className="text-zinc-600 dark:text-zinc-300 text-lg leading-relaxed mt-4">
                                 Open to full-stack and frontend roles. I respond within 24 hours.
